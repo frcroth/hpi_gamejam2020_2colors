@@ -29,9 +29,6 @@ func handle_WASD_keys(delta):
 		velocity = velocity.normalized() * speed
 	
 	body.move_and_collide(velocity)
-	#position += velocity * delta
-	#position.x = clamp(position.x, 0, screen_size.x)
-	#position.y = clamp(position.y, 0, screen_size.y)
 
 func handle_Arrow_keys(delta):
 	
@@ -49,9 +46,6 @@ func handle_Arrow_keys(delta):
 		velocity = velocity.normalized() * speed
 	
 	body.move_and_collide(velocity)
-	#position += velocity * delta
-	#position.x = clamp(position.x, 0, screen_size.x)
-	#position.y = clamp(position.y, 0, screen_size.y)	
 	
 func _process(delta):
 	if player_number == 1:
