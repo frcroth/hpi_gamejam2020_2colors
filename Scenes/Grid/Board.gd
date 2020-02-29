@@ -15,6 +15,7 @@ onready var tile = preload("res://Scenes/Grid/Tile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	playfield = generate_random_playfield(height,width)
 	init_playfield()
 
 
@@ -26,6 +27,20 @@ func init_playfield():
 			new_tile.position = Vector2(x * Globals.tilesize, y * Globals.tilesize)
 			new_tile.update_color()
 			add_child(new_tile)
+			
+func generate_random_playfield(h,w):
+	#Noise based?
+	var matrix = []
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	for x in range(width):
+    	matrix.append([])
+    	for y in range(height):
+        	matrix[x].append(rng.randi_range(0,1))
+			
+	return matrix
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
