@@ -3,11 +3,23 @@
 [ext_resource path="res://Scenes/UI/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/JetBrainsMonoRegular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/UI/MainButton.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Fonts/JetBrainsMono-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/UI/ContributorsButton.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 64
-font_data = ExtResource( 4 )
+[sub_resource type="Animation" id=1]
+resource_name = "LabelAnimation"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ContributorsLabel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 737, 501.803 ), Vector2( 291.979, 499.446 ) ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -15,10 +27,10 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="BlueRect" type="ColorRect" parent="."]
-margin_left = 480.021
-margin_top = -175.803
-margin_right = 1128.02
-margin_bottom = 708.197
+margin_left = 480.719
+margin_top = -176.501
+margin_right = 1128.72
+margin_bottom = 707.499
 rect_rotation = -23.23
 rect_pivot_offset = Vector2( 301.5, 804.496 )
 color = Color( 0.027451, 0.360784, 0.568627, 1 )
@@ -33,23 +45,47 @@ rect_pivot_offset = Vector2( 301.5, 804.496 )
 color = Color( 0.568627, 0.027451, 0.384314, 1 )
 
 [node name="MainButton" type="Button" parent="."]
-margin_left = 276.809
-margin_top = 346.522
-margin_right = 468.809
-margin_bottom = 447.522
+margin_left = 239.689
+margin_top = 303.01
+margin_right = 491.689
+margin_bottom = 359.01
 custom_fonts/font = ExtResource( 2 )
 text = "Start Game"
 script = ExtResource( 3 )
 
+[node name="ContributorsButton" type="Button" parent="."]
+margin_left = 217.573
+margin_top = 417.296
+margin_right = 518.573
+margin_bottom = 470.296
+custom_fonts/font = ExtResource( 2 )
+text = "Contributors"
+script = ExtResource( 4 )
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -297.0
-margin_top = -237.0
-margin_right = 345.0
-margin_bottom = -68.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = 167.0
+margin_top = 124.161
+margin_right = 568.0
+margin_bottom = 236.161
+custom_fonts/normal_font = ExtResource( 2 )
 text = "HPI GameJam 2020
 	2 Colors"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LabelAnimation = SubResource( 1 )
+
+[node name="ContributorsLabel" type="RichTextLabel" parent="."]
+margin_left = 760.0
+margin_top = 499.446
+margin_right = 947.0
+margin_bottom = 596.446
+bbcode_text = "Proudly presented by:
+frcroth
+jostmorgenstern
+oleschl
+sirkrypt0"
+text = "Proudly presented by:
+frcroth
+jostmorgenstern
+oleschl
+sirkrypt0"
