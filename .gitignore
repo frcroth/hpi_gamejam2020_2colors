@@ -5,3 +5,6 @@
 # Mono-specific ignores
 .mono/
 data_*/
+
+# Music
+Music/91.wav
