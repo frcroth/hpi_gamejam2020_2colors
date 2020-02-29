@@ -1,4 +1,4 @@
-# TFJ - HPI GameJam 2020 - Two Colors
+# JOFT - HPI GameJam 2020 - Two Colors
 
 The game works as follows:
   * Two players play **against** each other.
