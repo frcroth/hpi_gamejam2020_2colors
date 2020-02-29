@@ -8,7 +8,13 @@ var current_color = Globals.blue
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_dimensions()
 	update_color()
+	
+func set_dimensions():
+	$TileArea/TileCollisionShape.shape.set_extents(Vector2(Globals.tilesize/2, Globals.tilesize/2))
+	$TileArea/TileCollisionShape.position = Vector2(Globals.tilesize/2, Globals.tilesize/2)
+	$TileArea/TileColor.rect_size = Vector2(Globals.tilesize, Globals.tilesize)
 
 func update_color():
 	$TileArea/TileColor.color = Color(current_color)

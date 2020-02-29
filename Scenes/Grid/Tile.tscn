@@ -11,10 +11,7 @@ script/source = "extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var transform = $TileCollisionShape.get_transform()
-	transform.scaled(Vector2(Globals.tilesize, Globals.tilesize))
-	$TileCollisionShape.set_transform(transform)
-	print(transform.get_scale())
+	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -38,11 +35,10 @@ __meta__ = {
 }
 
 [node name="TileCollisionShape" type="CollisionShape2D" parent="TileArea"]
+position = Vector2( 64, 64 )
 shape = SubResource( 2 )
 
 [node name="TileColor" type="ColorRect" parent="TileArea"]
-margin_left = -64.0
-margin_top = -64.0
-margin_right = 64.0
-margin_bottom = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
 color = Color( 0.568627, 0.0431373, 0.027451, 1 )

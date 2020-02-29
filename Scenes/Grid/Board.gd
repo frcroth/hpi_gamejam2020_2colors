@@ -23,7 +23,7 @@ func init_playfield():
 		for x in range(width):
 			var new_tile = tile.instance()
 			new_tile.current_color = Globals.blue if playfield[y][x] == 0 else Globals.red
-			new_tile.position = Vector2(Globals.tilesize + 2 * x * Globals.tilesize, Globals.tilesize + 2 * y * Globals.tilesize)
+			new_tile.position = Vector2(x * Globals.tilesize, y * Globals.tilesize)
 			new_tile.update_color()
 			add_child(new_tile)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
