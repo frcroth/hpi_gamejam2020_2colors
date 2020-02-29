@@ -8,6 +8,10 @@ extends Control
 func _ready():
 	$RedRect.color = Globals.red
 	$BlueRect.color = Globals.blue
+	$MainButton.connect("pressed",self,"start_game")
+
+func start_game():
+	get_tree().change_scene("res://Scenes/Grid/Board.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
