@@ -4,7 +4,7 @@ var blue = Color("075c91")
 var red = Color("910b07")
 
 var tilesize = 64.0
-var beattime = 1.0
+var beattime = 0.66
 
 
 # Called when the node enters the scene tree for the first time.
