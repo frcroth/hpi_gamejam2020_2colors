@@ -15,7 +15,7 @@ func stop_beating():
 	beating = false
 	
 func beating_loop():
-	yield (get_tree().create_timer(0.2),"timeout")
+	yield (get_tree().create_timer(0.5),"timeout")
 	while beating:
 		yield (get_tree().create_timer(Globals.beattime*timefactor),"timeout")
 		$AudioStreamPlayer.play(0)
