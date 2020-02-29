@@ -23,6 +23,12 @@ config/icon="res://icon.png"
 
 Globals="*res://Scripts/Globals.gd"
 
+[display]
+
+window/size/width=720
+window/size/height=720
+
 [rendering]
 
+environment/default_clear_color=Color( 1, 1, 1, 1 )
 environment/default_environment="res://default_env.tres"
