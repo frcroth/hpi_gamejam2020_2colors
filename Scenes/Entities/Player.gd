@@ -1,0 +1,57 @@
+extends Node2D
+
+export var speed = 200
+var screen_size
+var player_number
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	screen_size = get_viewport_rect().size
+	if player_number == 1:
+		get_node("PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerredplaceholder.png")
+	else:
+		get_node("PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerblueplaceholder.png")
+
+func handle_WASD_keys(delta):
+	var velocity = Vector2()  # The player's movement vector.
+
+	if Input.is_key_pressed(KEY_D):
+		velocity.x += 1
+	if Input.is_key_pressed(KEY_A):
+		velocity.x -= 1
+	if Input.is_key_pressed(KEY_S):
+		velocity.y += 1
+	if Input.is_key_pressed(KEY_W):
+		velocity.y -= 1
+	
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		
+	position += velocity * delta
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
+
+func handle_Arrow_keys(delta):
+	
+	var velocity = Vector2()  # The player's movement vector.
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
+	
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		
+	position += velocity * delta
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)	
+	
+func _process(delta):
+	if player_number == 1:
+		handle_WASD_keys(delta)
+	else:
+		handle_Arrow_keys(delta)
