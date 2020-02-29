@@ -1,3 +1,29 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource path="res://Scenes/Grid/Tile.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Grid/Area.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 96, 96 )
+
+[node name="Tile" type="Node2D"]
+scale = Vector2( 0.969585, 0.950506 )
+script = ExtResource( 1 )
+
+[node name="TileArea" type="Area2D" parent="." groups=[
+"beatable",
+]]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileCollisionShape" type="CollisionShape2D" parent="TileArea"]
+shape = SubResource( 1 )
+
+[node name="TileColor" type="ColorRect" parent="TileArea"]
+margin_left = -96.0
+margin_top = -96.0
+margin_right = 96.0
+margin_bottom = 96.0
+color = Color( 0.568627, 0.0431373, 0.027451, 1 )

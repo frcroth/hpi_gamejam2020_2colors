@@ -1,9 +1,9 @@
 extends Node
 
-var blue = Color("910b07")
-var red = Color("075c91")
+var blue = Color("075c91")
+var red = Color("910b07")
 
-var tilesize = 64
+var tilesize = 64.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
