@@ -9,7 +9,6 @@ var current_color = Globals.blue
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_color()
-	swap_color()
 
 func update_color():
 	$TileArea/TileColor.color = Color(current_color)
