@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 576.514, 450.638 )
+position = Vector2( 224.06, 151.052 )
 z_index = 1
 
 [node name="BeatGiver" parent="." instance=ExtResource( 3 )]
