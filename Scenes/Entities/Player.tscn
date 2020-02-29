@@ -18,6 +18,6 @@ shape = SubResource( 1 )
 [node name="PlayerSprite" type="AnimatedSprite" parent="Body"]
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 2 )
-frame = 3
+frame = 2
 playing = true
 offset = Vector2( 64, 64 )
