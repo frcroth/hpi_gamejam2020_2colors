@@ -12,6 +12,7 @@ func _ready():
 
 func start_game():
 	get_tree().change_scene("res://Scenes/Grid/Board.tscn")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
