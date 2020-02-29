@@ -31,13 +31,12 @@ func init_playfield():
 			add_child(new_tile)
 
 func init_players():
-	var player1 = player_scene.instance()
+	player1 = player_scene.instance()
 	player1.position = Vector2(0,0)
 	player1.player_number = 1
-	print(get_node("player1/PlayerSprite/TextureRect"))
 	add_child(player1)
 	
-	var player2 = player_scene.instance()
+	player2 = player_scene.instance()
 	player2.position = Vector2(width * Globals.tilesize, height * Globals.tilesize)
 	player2.player_number = 2
 	add_child(player2)
@@ -48,9 +47,9 @@ func generate_random_playfield(h,w):
 	var matrix = []
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	for x in range(width):
+	for x in range(w):
     	matrix.append([])
-    	for y in range(height):
+    	for y in range(h):
         	matrix[x].append(rng.randi_range(0,1))
 			
 	return matrix
