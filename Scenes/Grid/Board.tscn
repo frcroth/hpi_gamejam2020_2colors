@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Scenes/Grid/Board.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Entities/Items.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Logic/BeatGiver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Logic/BeatGiver.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Logic/Borders.tscn" type="PackedScene" id=3]
 
 [node name="Board" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,3 +13,5 @@ position = Vector2( 576.514, 450.638 )
 z_index = 1
 
 [node name="BeatGiver" parent="." instance=ExtResource( 3 )]
+
+[node name="Borders" parent="." instance=ExtResource( 3 )]

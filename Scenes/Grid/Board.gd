@@ -37,7 +37,7 @@ func init_players():
 	add_child(player1)
 	
 	player2 = player_scene.instance()
-	player2.position = Vector2(width * Globals.tilesize, height * Globals.tilesize)
+	player2.position = Vector2((width/2) * Globals.tilesize, (height/2) * Globals.tilesize)
 	player2.player_number = 2
 	add_child(player2)
 
