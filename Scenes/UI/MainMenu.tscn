@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/MainButton.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/JetBrainsMonoRegular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/UI/MainButton.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/JetBrainsMono-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 4 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -27,16 +33,23 @@ rect_pivot_offset = Vector2( 301.5, 804.496 )
 color = Color( 0.568627, 0.027451, 0.384314, 1 )
 
 [node name="MainButton" type="Button" parent="."]
-margin_left = 316.143
-margin_top = 341.791
-margin_right = 440.143
-margin_bottom = 394.791
+margin_left = 276.809
+margin_top = 346.522
+margin_right = 468.809
+margin_bottom = 447.522
+custom_fonts/font = ExtResource( 2 )
 text = "Start Game"
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 266.078
-margin_top = 200.837
-margin_right = 466.078
-margin_bottom = 250.837
-text = "HPI GameJam 2020 - 2 Colors"
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -297.0
+margin_top = -237.0
+margin_right = 345.0
+margin_bottom = -68.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "HPI GameJam 2020
+	2 Colors"
