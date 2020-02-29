@@ -8,3 +8,9 @@ The game works as follows:
   * Every beat of the playing music, the field colors are changing to the opposite.
   * Once a player is on a field that not fits its color, the player dies.
   * There are several powerups a player can collect, to get closer to killing the other player.
+
+# Colors
+
+**Red:** #910b07
+
+**Blue:** #075c91
