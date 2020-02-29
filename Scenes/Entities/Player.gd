@@ -52,3 +52,15 @@ func _process(delta):
 		handle_WASD_keys(delta)
 	else:
 		handle_Arrow_keys(delta)
+		
+func speedup(time):
+	speed *= 2
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.set_wait_time(time)
+	timer.connect("timeout", self, "speeddown")
+	add_child(timer)
+	timer.start()
+	
+func speeddown():
+	speed /= 2
