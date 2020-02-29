@@ -1,31 +1,28 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Graphics/Players/playerblueplaceholder.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Entities/Player.gd" type="Script" id=2]
-
+[ext_resource path="res://Scenes/Entities/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Graphics/Players/playerblueplaceholder.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 58.7492
 
 [node name="Player" type="Node2D"]
+script = ExtResource( 1 )
 
-script = ExtResource( 2 )
+[node name="Body" type="KinematicBody2D" parent="."]
 
+[node name="PlayerSprite" type="Sprite" parent="Body"]
 
-[node name="PlayerSprite" type="Sprite" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="PlayerSprite"]
+[node name="TextureRect" type="TextureRect" parent="Body/PlayerSprite"]
 margin_left = 0.219021
 margin_top = 0.849287
 margin_right = 128.219
 margin_bottom = 128.849
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="PlayerSprite"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 position = Vector2( 64.2855, 64.2854 )
 shape = SubResource( 1 )
