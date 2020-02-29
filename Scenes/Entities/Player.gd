@@ -1,16 +1,17 @@
 extends Node2D
 
-export var speed = 200
+export var speed = 2
 var screen_size
 var player_number
+onready var body = $Body
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	if player_number == 1:
-		get_node("PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerredplaceholder.png")
+		get_node("Body/PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerredplaceholder.png")
 	else:
-		get_node("PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerblueplaceholder.png")
+		get_node("Body/PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerblueplaceholder.png")
 
 func handle_WASD_keys(delta):
 	var velocity = Vector2()  # The player's movement vector.
@@ -26,10 +27,11 @@ func handle_WASD_keys(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	
+	body.move_and_collide(velocity)
+	#position += velocity * delta
+	#position.x = clamp(position.x, 0, screen_size.x)
+	#position.y = clamp(position.y, 0, screen_size.y)
 
 func handle_Arrow_keys(delta):
 	
@@ -45,10 +47,11 @@ func handle_Arrow_keys(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)	
+	
+	body.move_and_collide(velocity)
+	#position += velocity * delta
+	#position.x = clamp(position.x, 0, screen_size.x)
+	#position.y = clamp(position.y, 0, screen_size.y)	
 	
 func _process(delta):
 	if player_number == 1:

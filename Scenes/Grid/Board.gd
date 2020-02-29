@@ -34,7 +34,6 @@ func init_players():
 	var player1 = player_scene.instance()
 	player1.position = Vector2(0,0)
 	player1.player_number = 1
-	print(get_node("player1/PlayerSprite/TextureRect"))
 	add_child(player1)
 	
 	var player2 = player_scene.instance()
