@@ -65,7 +65,8 @@ func speedup(time):
 	timer.one_shot = true
 	timer.set_wait_time(time)
 	timer.connect("timeout", self, "speeddown")
+	add_child(timer)
 	timer.start()
 	
-func pseeddown():
+func speeddown():
 	speed /= 2
