@@ -49,8 +49,8 @@ func handle_keys():
 		position = position + body_pos
 		if colorstreak_active:
 			var current_tile = current_tile()
-			var underlying_tile_color = Globals.red if current_color == Globals.blue else Globals.blue
-			get_parent().playfield[current_tile.y][current_tile.x].set_color(underlying_tile_color)
+			var inverted_player_color = Globals.red if current_color == Globals.blue else Globals.blue
+			get_parent().playfield[current_tile.y][current_tile.x].set_color(inverted_player_color)
 	
 	
 func current_tile():
@@ -102,6 +102,7 @@ func on_beat():
 		# give some time to change tile
 		yield (get_tree().create_timer(Globals.GOODWILLTIME),"timeout")
 		# now you have to be on the right tile!
+		
 		if(is_dead()):
 			print("Player ", player_number ," is dead!")
 			die()

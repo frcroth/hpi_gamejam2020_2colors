@@ -57,7 +57,7 @@ func init_players():
 	player2.position = bottomright
 	player2.player_number = 2
 	add_child(player2)
-	
+#
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
