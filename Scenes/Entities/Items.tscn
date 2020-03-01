@@ -33,7 +33,7 @@ shape = SubResource( 1 )
 
 [node name="ItemSprite" type="AnimatedSprite" parent="Area2D"]
 frames = ExtResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="."]

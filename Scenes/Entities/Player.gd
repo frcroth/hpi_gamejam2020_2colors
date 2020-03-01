@@ -85,8 +85,9 @@ func die():
 	Globals.player_lost(player_number)
 
 func on_beat():
-	# give some time to change tile
-	yield (get_tree().create_timer(Globals.GOODWILLTIME),"timeout")
-	# now you have to be on the right tile!
-	if(is_dead()):
-		die()
+	if Globals.PLAYERS_CAN_DIE:
+		# give some time to change tile
+		yield (get_tree().create_timer(Globals.GOODWILLTIME),"timeout")
+		# now you have to be on the right tile!
+		if(is_dead()):
+			die()
