@@ -3,6 +3,7 @@
 [ext_resource path="res://Scripts/BeatGiver.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sounds/snare.wav" type="AudioStream" id=2]
 
+
 [node name="BeatGiver" type="Node2D"]
 script = ExtResource( 1 )
 

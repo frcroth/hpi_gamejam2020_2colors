@@ -11,7 +11,6 @@ func _ready():
 	
 func pickup(body):
 	body.get_parent().speedup(5)
-	body.get_parent().pickup()
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
