@@ -4,9 +4,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var item_spawn_time = 10
-var items = [preload("res://Scenes/Entities/ColorItem.tscn")]
-#preload("res://Scenes/Entities/SpeedItem.tscn"),
+var item_spawn_time = 5
+var items = [preload("res://Scenes/Entities/SpeedItem.tscn"), preload("res://Scenes/Entities/ColorItem.tscn")]
 
 var rng = RandomNumberGenerator.new()
 

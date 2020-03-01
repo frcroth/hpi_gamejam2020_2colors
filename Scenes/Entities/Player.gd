@@ -49,7 +49,8 @@ func handle_keys():
 		position = position + body_pos
 		if colorstreak_active:
 			var current_tile = current_tile()
-			get_parent().playfield[current_tile.y][current_tile.x].set_color(current_color)
+			var underlying_tile_color = Globals.red if current_color == Globals.blue else Globals.blue
+			get_parent().playfield[current_tile.y][current_tile.x].set_color(underlying_tile_color)
 	
 	
 func current_tile():

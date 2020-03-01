@@ -11,7 +11,6 @@ func _ready():
 	
 func pickup(body):
 	body.get_parent().activate_colorstreak(10)
-	print(body.get_parent())
 	body.get_parent().pickup()
 	queue_free()
 
