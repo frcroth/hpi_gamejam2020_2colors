@@ -34,6 +34,9 @@ margin_bottom = 707.499
 rect_rotation = -23.23
 rect_pivot_offset = Vector2( 301.5, 804.496 )
 color = Color( 0.027451, 0.360784, 0.568627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RedRect" type="ColorRect" parent="."]
 margin_left = -158.438

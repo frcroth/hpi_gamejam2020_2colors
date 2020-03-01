@@ -21,38 +21,41 @@ func _ready():
 
 func init_playfield():
 	var tilestart = (get_viewport_rect().size.x - width * Globals.tilesize) / 2
-	playfield = generate_random_playfield(height,width)
+	playfield = []
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
 	for y in range(height):
+		playfield.append([])
 		for x in range(width):
+			
+			var color
+			if x == 0 && y == 0:
+				color = Globals.blue
+			elif x == width - 1 && y == height - 1:
+				color = Globals.red
+			else:
+				color = Globals.red if rng.randi_range(0,1) == 0 else Globals.blue
+			
 			var new_tile = tile.instance()
-			new_tile.current_color = Globals.blue if playfield[y][x] == 0 else Globals.red
+			new_tile.current_color = color
+			playfield[y].append(new_tile)
 			new_tile.position = Vector2(tilestart + x * Globals.tilesize, tilestart + y * Globals.tilesize)
 			new_tile.update_color()
 			add_child(new_tile)
 
 func init_players():
 	player1 = player_scene.instance()
-	player1.position = Vector2(0,0)
+	player1.position = playfield[0][0].position
 	player1.player_number = 1
 	add_child(player1)
 	
 	player2 = player_scene.instance()
-	player2.position = Vector2((width/2) * Globals.tilesize, (height/2) * Globals.tilesize)
+	player2.position = playfield[height - 1][width - 1].position
 	player2.player_number = 2
 	add_child(player2)
+	
 
-
-func generate_random_playfield(h,w):
-	#Noise based?
-	var matrix = []
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	for x in range(w):
-    	matrix.append([])
-    	for y in range(h):
-        	matrix[x].append(rng.randi_range(0,1))
-			
-	return matrix
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
