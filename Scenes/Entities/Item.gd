@@ -1,17 +1,27 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var type = "speed"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("body_entered", self, "pickup")
 	
+func init(item_type):
+	type = item_type
+	if(type == "speed"):
+		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/speedup/speedup.png")
+	if(type == "color"):
+		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/color/color.png")
 	
+func do_item_effect(body):
+	if(type == "speed"):
+		body.get_parent().speedup(5)
+	if(type == "color"):
+		body.get_parent().activate_colorstreak(10)
+
 func pickup(body):
 	$Particles2D.emitting = true
-	body.get_parent().speedup(5)
+	do_item_effect(body)
 	body.get_parent().pickup()
 	$Area2D/ItemSprite.visible = false
 	$Area2D/CollisionShape2D.call_deferred("set_disabled",true)
@@ -19,6 +29,3 @@ func pickup(body):
 	yield (get_tree().create_timer(1),"timeout")
 	queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

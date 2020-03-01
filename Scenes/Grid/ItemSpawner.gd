@@ -5,7 +5,8 @@ extends Node2D
 # var b = "text"
 
 var item_spawn_time = 5
-var items = [preload("res://Scenes/Entities/SpeedItem.tscn"), preload("res://Scenes/Entities/ColorItem.tscn")]
+onready var item = preload("res://Scenes/Entities/Item.tscn")
+var itemtypes = ["color","speed"]
 
 var rng = RandomNumberGenerator.new()
 
@@ -21,7 +22,8 @@ func _ready():
 	spawn_new_item()
 
 func spawn_new_item():
-	var new_item = items[rng.randi_range(0, len(items) - 1)].instance()
+	var new_item = item.instance()
+	new_item.init(itemtypes[rng.randi_range(0, len(itemtypes) - 1)])
 	var radius = new_item.get_node('Area2D/CollisionShape2D').shape.radius
 	var viewport_size = get_viewport_rect().size
 	var new_x = rng.randf_range(radius , viewport_size.x - radius)
