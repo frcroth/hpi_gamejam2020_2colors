@@ -4,6 +4,7 @@ export var speed = 2
 var screen_size
 var player_number
 var current_color
+var colorstreak_active
 onready var body = $Body
 
 var foo = 0
@@ -31,8 +32,20 @@ func handle_WASD_keys(delta):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+		
+		body.move_and_collide(velocity)
+		var body_pos = body.position
+		body.position = Vector2(0, 0)
+		position = position + body_pos
+	
+		print("self: " + str(position))
+		print("body: " + str(body.position))
+		print("tile: " + str(current_tile()))
+		
+		var current_tile = current_tile()
+		get_parent().playfield[current_tile.y][current_tile.x].set_color(current_color)
 
-	body.move_and_collide(velocity)
+	
 
 func handle_Arrow_keys(delta):
 	var velocity = Vector2()  # The player's movement vector.
@@ -49,9 +62,12 @@ func handle_Arrow_keys(delta):
 		velocity = velocity.normalized() * speed
 	
 	body.move_and_collide(velocity)
+	var body_pos = body.position
+	body.position = Vector2(0, 0)
+	position = position + body_pos
 	
 func current_tile():
-	var center_pos = body.position + Vector2(Globals.tilesize / 2, Globals.tilesize / 2)
+	var center_pos = position + Vector2(Globals.tilesize / 2, Globals.tilesize / 2)
 	var x_tile = int(center_pos.x / Globals.tilesize)
 	var y_tile = int(center_pos.y / Globals.tilesize)
 	return Vector2(x_tile, y_tile)
@@ -65,6 +81,7 @@ func _process(delta):
 		handle_WASD_keys(delta)
 	else:
 		handle_Arrow_keys(delta)
+		
 			
 func speedup(time):
 	speed *= 2
@@ -75,8 +92,22 @@ func speedup(time):
 	add_child(timer)
 	timer.start()
 	
+func speeddown():
+	speed /= 2
+	
+func activate_colorstreak(time):
+	colorstreak_active = true
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.set_wait_time(time)
+	timer.connect("timeout", self, "deactivate_colorstreak")
+	add_child(timer)
+	timer.start()
+	
+func deactivate_colorstreak():
+	colorstreak_active = false
+	
 func pickup():
 	$PickupPlayer.play(0)
 	
-func speeddown():
-	speed /= 2
+

@@ -28,6 +28,10 @@ func update_color():
 	else:
 		$TileArea/TileSprite.texture = red_sprite
 
+func set_color(color):
+	current_color = color
+	update_color()
+
 func swap_color():
 	current_color = Globals.blue if (current_color == Globals.red) else Globals.red
 	update_color()

@@ -45,13 +45,16 @@ func init_playfield():
 			add_child(new_tile)
 
 func init_players():
+	var topleft = playfield[0][0].position
+	var bottomright = topleft + Vector2((width-1) * Globals.tilesize, (height - 1) * Globals.tilesize)
+	
 	player1 = player_scene.instance()
-	player1.position = playfield[0][0].position
+	player1.position = topleft
 	player1.player_number = 1
 	add_child(player1)
 	
 	player2 = player_scene.instance()
-	player2.position = playfield[height - 1][width - 1].position
+	player2.position = bottomright
 	player2.player_number = 2
 	add_child(player2)
 	

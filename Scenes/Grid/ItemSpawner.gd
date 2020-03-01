@@ -5,7 +5,9 @@ extends Node2D
 # var b = "text"
 
 var item_spawn_time = 10
-var items = [preload("res://Scenes/Entities/Items.tscn")]
+var items = [preload("res://Scenes/Entities/ColorItem.tscn")]
+#preload("res://Scenes/Entities/SpeedItem.tscn"),
+
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
