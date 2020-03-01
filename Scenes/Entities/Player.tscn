@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Entities/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Players/playerblue/playerblue.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Assets/Sounds/item_pickup.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.0624
@@ -23,6 +24,10 @@ material = SubResource( 2 )
 use_parent_material = true
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 2 )
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( 64, 64 )
+
+[node name="PickupPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 4.727

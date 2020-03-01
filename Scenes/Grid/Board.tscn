@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Music/91.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/Entities/Items.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Environment" id=4]
+[sub_resource type="Environment" id=1]
 background_mode = 4
 tonemap_exposure = 1.8
 glow_enabled = true
@@ -29,7 +29,7 @@ stream = ExtResource( 4 )
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 4 )
+environment = SubResource( 1 )
 
 [node name="NoGlowLayer" type="CanvasLayer" parent="."]
 

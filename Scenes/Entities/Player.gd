@@ -62,5 +62,8 @@ func speedup(time):
 	add_child(timer)
 	timer.start()
 	
+func pickup():
+	$PickupPlayer.play(0)
+	
 func speeddown():
 	speed /= 2
