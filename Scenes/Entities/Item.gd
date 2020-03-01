@@ -13,6 +13,8 @@ func init(item_type):
 		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/speedup/speedup.png")
 	if(type == "color"):
 		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/color/color.png")
+	if(type == "invertcontrol"):
+		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/invert/invert.png")
 	
 func do_item_effect(body):
 	if(type == "speed"):
@@ -20,7 +22,7 @@ func do_item_effect(body):
 	if(type == "color"):
 		body.get_parent().activate_colorstreak(10)
 	if(type == "invertcontrol"):
-		
+		body.get_parent().get_opponent().invert_controls(5)
 
 func pickup(body):
 	$Particles2D.emitting = true

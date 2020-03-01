@@ -5,6 +5,7 @@ var screen_size
 var player_number
 var current_color
 var colorstreak_active
+var controlsinverted = false
 onready var body = $Body
 
 var foo = 0
@@ -21,9 +22,10 @@ func _ready():
 		current_color = Globals.red
 		add_to_group("player2")
 
+
 func handle_keys():
 	var velocity = Vector2()  # The player's movement vector.
-	if player_number == 1:
+	if player_number == 1 and !controlsinverted:
 		if Input.is_key_pressed(KEY_D):
 			velocity.x += 1
 		if Input.is_key_pressed(KEY_A):
@@ -32,7 +34,16 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_key_pressed(KEY_W):
 			velocity.y -= 1
-	else:
+	if player_number == 1 and controlsinverted:
+		if Input.is_key_pressed(KEY_D):
+			velocity.x -= 1
+		if Input.is_key_pressed(KEY_A):
+			velocity.x += 1
+		if Input.is_key_pressed(KEY_S):
+			velocity.y -= 1
+		if Input.is_key_pressed(KEY_W):
+			velocity.y += 1
+	if player_number == 2 and !controlsinverted:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += 1
 		if Input.is_action_pressed("ui_left"):
@@ -41,6 +52,15 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= 1
+	else:
+		if Input.is_action_pressed("ui_right"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y -= 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y += 1
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -93,9 +113,27 @@ func activate_colorstreak(time):
 func deactivate_colorstreak():
 	colorstreak_active = false
 	
+func invert_controls(time):
+	controlsinverted = true
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.set_wait_time(time)
+	timer.connect("timeout", self, "deactivate_inverted_control")
+	add_child(timer)
+	timer.start()
+
+func deactivate_inverted_controls():
+	controlsinverted = false
+	
 func pickup():
 	$PickupPlayer.play(0)
-	
+
+func get_opponent():
+	if(player_number==1):
+		return get_parent().get_tree().get_nodes_in_group("player2")[0]
+	else:
+		return get_parent().get_tree().get_nodes_in_group("player1")[0]
+
 func die():
 	Globals.player_lost(player_number)
 
