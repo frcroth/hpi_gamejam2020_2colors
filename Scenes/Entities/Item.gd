@@ -22,7 +22,7 @@ func do_item_effect(body):
 	if(type == "color"):
 		body.get_parent().activate_colorstreak(10)
 	if(type == "invertcontrol"):
-		body.get_parent().get_opponent().invert_controls()
+		body.get_parent().get_opponent().invert_controls(5)
 
 func pickup(body):
 	$Particles2D.emitting = true
