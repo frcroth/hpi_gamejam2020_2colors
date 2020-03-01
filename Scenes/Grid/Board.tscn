@@ -33,5 +33,5 @@ environment = SubResource( 1 )
 
 [node name="NoGlowLayer" type="CanvasLayer" parent="."]
 
-[node name="Item" parent="NoGlowLayer" instance=ExtResource( 5 )]
-position = Vector2( 118.829, 564.927 )
+[node name="ItemSpawner" type="Node2D" parent="."]
+script = ExtResource( 5 )
