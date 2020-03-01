@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Grid/Tile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Graphics/Tiles/red_tile/red_tile.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -19,7 +20,7 @@ func _ready():
 "
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 64, 64 )
+extents = Vector2( 32, 32 )
 
 [node name="Tile" type="Node2D" groups=[
 "beatable",
@@ -35,10 +36,9 @@ __meta__ = {
 }
 
 [node name="TileCollisionShape" type="CollisionShape2D" parent="TileArea"]
-position = Vector2( 64, 64 )
+position = Vector2( 32, 32 )
 shape = SubResource( 2 )
 
-[node name="TileColor" type="ColorRect" parent="TileArea"]
-margin_right = 128.0
-margin_bottom = 128.0
-color = Color( 0.568627, 0.0431373, 0.027451, 1 )
+[node name="TileSprite" type="Sprite" parent="TileArea"]
+position = Vector2( 32, 32 )
+texture = ExtResource( 2 )
