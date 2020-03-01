@@ -10,7 +10,9 @@ radius = 31.0624
 [sub_resource type="CanvasItemMaterial" id=2]
 light_mode = 1
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=[
+"beatable",
+]]
 script = ExtResource( 1 )
 
 [node name="Body" type="KinematicBody2D" parent="."]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/JetBrainsMonoRegular.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Scenes/UI/MainButton.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/UI/MainButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Fonts/JetBrainsMonoRegular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/UI/ContributorsButton.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -47,21 +47,14 @@ rect_rotation = -23.23
 rect_pivot_offset = Vector2( 301.5, 804.496 )
 color = Color( 0.568627, 0.027451, 0.384314, 1 )
 
-[node name="MainButton" type="Button" parent="."]
-margin_left = 239.689
-margin_top = 303.01
-margin_right = 491.689
-margin_bottom = 359.01
-custom_fonts/font = ExtResource( 2 )
-text = "Start Game"
-script = ExtResource( 3 )
+[node name="MainButton" parent="." instance=ExtResource( 2 )]
 
 [node name="ContributorsButton" type="Button" parent="."]
 margin_left = 217.573
 margin_top = 417.296
 margin_right = 518.573
 margin_bottom = 470.296
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "Contributors"
 script = ExtResource( 4 )
 
@@ -70,7 +63,7 @@ margin_left = 167.0
 margin_top = 124.161
 margin_right = 568.0
 margin_bottom = 236.161
-custom_fonts/normal_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 3 )
 text = "HPI GameJam 2020
 	2 Colors"
 

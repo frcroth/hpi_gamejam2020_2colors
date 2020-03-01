@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Fonts/JetBrainsMonoRegular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/UI/MainButton.gd" type="Script" id=2]
+
+[node name="MainButton" type="Button"]
+margin_left = 239.689
+margin_top = 303.01
+margin_right = 491.689
+margin_bottom = 359.01
+custom_fonts/font = ExtResource( 1 )
+text = "Start Game"
+script = ExtResource( 2 )
