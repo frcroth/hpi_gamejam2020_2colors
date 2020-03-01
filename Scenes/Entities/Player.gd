@@ -90,4 +90,5 @@ func on_beat():
 		yield (get_tree().create_timer(Globals.GOODWILLTIME),"timeout")
 		# now you have to be on the right tile!
 		if(is_dead()):
+			print("Player ", player_number ," is dead!")
 			die()

@@ -7,7 +7,7 @@ var tilesize = 64.0
 var beattime = 0.66
 var GOODWILLTIME = 0.3
 var player_won = 0
-var PLAYERS_CAN_DIE = false
+var PLAYERS_CAN_DIE = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

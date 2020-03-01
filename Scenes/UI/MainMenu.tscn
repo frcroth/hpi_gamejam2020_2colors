@@ -1,9 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/MainButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fonts/JetBrainsMonoRegular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/UI/ContributorsButton.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=2]
+resource_name = "HelpLabelAnimation"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HelpLabel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -223, 297 ), Vector2( 33.7441, 485.582 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "LabelAnimation"
@@ -48,6 +63,8 @@ rect_pivot_offset = Vector2( 301.5, 804.496 )
 color = Color( 0.568627, 0.027451, 0.384314, 1 )
 
 [node name="MainButton" parent="." instance=ExtResource( 2 )]
+margin_left = 216.54
+margin_right = 468.54
 
 [node name="ContributorsButton" type="Button" parent="."]
 margin_left = 217.573
@@ -58,16 +75,17 @@ custom_fonts/font = ExtResource( 3 )
 text = "Contributors"
 script = ExtResource( 4 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 167.0
-margin_top = 124.161
-margin_right = 568.0
-margin_bottom = 236.161
+[node name="NameLabel" type="RichTextLabel" parent="."]
+margin_left = 298.78
+margin_top = 78.7196
+margin_right = 699.78
+margin_bottom = 190.72
 custom_fonts/normal_font = ExtResource( 3 )
 text = "HPI GameJam 2020
 	2 Colors"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/HelpLabelAnimation = SubResource( 2 )
 anims/LabelAnimation = SubResource( 1 )
 
 [node name="ContributorsLabel" type="RichTextLabel" parent="."]
@@ -75,6 +93,7 @@ margin_left = 760.0
 margin_top = 499.446
 margin_right = 947.0
 margin_bottom = 596.446
+rect_pivot_offset = Vector2( 30, -140.436 )
 bbcode_text = "Proudly presented by:
 frcroth
 jostmorgenstern
@@ -85,3 +104,29 @@ frcroth
 jostmorgenstern
 oleschl
 sirkrypt0"
+
+[node name="HelpButton" type="Button" parent="."]
+margin_left = 481.583
+margin_top = 300.278
+margin_right = 517.583
+margin_bottom = 361.278
+custom_fonts/font = ExtResource( 3 )
+text = "?"
+
+[node name="HelpLabel" type="RichTextLabel" parent="."]
+margin_left = -232.088
+margin_top = 303.816
+margin_right = -23.0882
+margin_bottom = 491.816
+text = "Are you blue or red?
+Control your player:
+Blue: WASD Red:  Arrow Keys
+Make sure to be on your color when the snare hits!
+Items may be useful in winning the game!"
+
+[node name="BottomLabel" type="Label" parent="."]
+margin_top = 704.0
+margin_right = 719.0
+margin_bottom = 739.0
+text = "Est. 2020 - Created in Landeshauptstadt Potsdam"
+align = 1
