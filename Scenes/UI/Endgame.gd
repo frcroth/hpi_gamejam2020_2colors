@@ -1,5 +1,6 @@
 extends Control
 
+var endtexts = ["Red won!", "Blue won!"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,12 +11,10 @@ func start_game():
 	get_tree().change_scene("res://Scenes/Grid/Board.tscn")
 
 func player_won(player_num):
-	if (player_num == 1): #blue
-		$ColorRect.color = Globals.blue
-		$RichTextLabel.text = "Blue won!"
-	else:
-		$ColorRect.color = Globals.red
-		$RichTextLabel.text = "Red won!"
+	$WinnerColorRect.color = Globals.colors[player_num]
+	$WinnerLabel.text = endtexts[player_num]
+	$PointsRedLabel.text += str(Globals.wins[0])
+	$PointsBlueLabel.text += str(Globals.wins[1])
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
