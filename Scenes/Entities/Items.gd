@@ -10,6 +10,7 @@ func _ready():
 	
 	
 func pickup(body):
+	$Particles2D.emitting = true
 	body.get_parent().speedup(5)
 	body.get_parent().pickup()
 	queue_free()
