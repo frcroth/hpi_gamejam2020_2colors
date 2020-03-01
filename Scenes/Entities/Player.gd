@@ -9,9 +9,9 @@ onready var body = $Body
 func _ready():
 	screen_size = get_viewport_rect().size
 	if player_number == 1:
-		get_node("Body/PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerredplaceholder.png")
+		get_node("Body/PlayerSprite").frames = load("res://Assets/Graphics/Players/playerblue/playerblue.tres")
 	else:
-		get_node("Body/PlayerSprite/TextureRect").texture = load("res://Assets/Graphics/Players/playerblueplaceholder.png")
+		get_node("Body/PlayerSprite").frames = load("res://Assets/Graphics/Players/playerred/playerred.tres")
 
 func handle_WASD_keys(delta):
 	var velocity = Vector2()  # The player's movement vector.
@@ -61,6 +61,9 @@ func speedup(time):
 	timer.connect("timeout", self, "speeddown")
 	add_child(timer)
 	timer.start()
+	
+func pickup():
+	$PickupPlayer.play(0)
 	
 func speeddown():
 	speed /= 2
