@@ -50,12 +50,12 @@ func init_players():
 	
 	player1 = player_scene.instance()
 	player1.position = topleft
-	player1.player_number = 1
+	player1.player_number = 0
 	add_child(player1)
 	
 	player2 = player_scene.instance()
 	player2.position = bottomright
-	player2.player_number = 2
+	player2.player_number = 1
 	add_child(player2)
 #
 

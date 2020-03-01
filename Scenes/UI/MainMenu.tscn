@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Fonts/JetBrainsMonoRegular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/UI/ContributorsButton.gd" type="Script" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "HelpLabelAnimation"
 tracks/0/type = "value"
 tracks/0/path = NodePath("HelpLabel:rect_position")
@@ -20,8 +20,7 @@ tracks/0/keys = {
 "values": [ Vector2( -223, 297 ), Vector2( 33.7441, 485.582 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "LabelAnimation"
+[sub_resource type="Animation" id=2]
 length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContributorsLabel:rect_position")
@@ -85,8 +84,8 @@ text = "HPI GameJam 2020
 	2 Colors"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/HelpLabelAnimation = SubResource( 2 )
-anims/LabelAnimation = SubResource( 1 )
+anims/HelpLabelAnimation = SubResource( 1 )
+anims/LabelAnimation = SubResource( 2 )
 
 [node name="ContributorsLabel" type="RichTextLabel" parent="."]
 margin_left = 760.0
