@@ -58,12 +58,11 @@ func current_tile():
 	
 func is_dead():
 	var current_tile = current_tile()
-	return get_parent().playfield[current_tile.x][current_tile.y].current_color == current_color
+	return get_parent().playfield[current_tile.y][current_tile.x].current_color != current_color
 
 func _process(delta):
 	if player_number == 1:
 		handle_WASD_keys(delta)
-		print(current_tile())
 	else:
 		handle_Arrow_keys(delta)
 			
