@@ -19,17 +19,27 @@ func _ready():
 		get_node("Body/PlayerSprite").frames = load("res://Assets/Graphics/Players/playerred/playerred.tres")
 		current_color = Globals.red
 
-func handle_WASD_keys(delta):
+func handle_keys():
 	var velocity = Vector2()  # The player's movement vector.
-	if Input.is_key_pressed(KEY_D):
-		velocity.x += 1
-	if Input.is_key_pressed(KEY_A):
-		velocity.x -= 1
-	if Input.is_key_pressed(KEY_S):
-		velocity.y += 1
-	if Input.is_key_pressed(KEY_W):
-		velocity.y -= 1
-
+	if player_number == 1:
+		if Input.is_key_pressed(KEY_D):
+			velocity.x += 1
+		if Input.is_key_pressed(KEY_A):
+			velocity.x -= 1
+		if Input.is_key_pressed(KEY_S):
+			velocity.y += 1
+		if Input.is_key_pressed(KEY_W):
+			velocity.y -= 1
+	else:
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		
@@ -37,34 +47,10 @@ func handle_WASD_keys(delta):
 		var body_pos = body.position
 		body.position = Vector2(0, 0)
 		position = position + body_pos
+		if colorstreak_active:
+			var current_tile = current_tile()
+			get_parent().playfield[current_tile.y][current_tile.x].set_color(current_color)
 	
-		print("self: " + str(position))
-		print("body: " + str(body.position))
-		print("tile: " + str(current_tile()))
-		
-		var current_tile = current_tile()
-		get_parent().playfield[current_tile.y][current_tile.x].set_color(current_color)
-
-	
-
-func handle_Arrow_keys(delta):
-	var velocity = Vector2()  # The player's movement vector.
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
-	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-	
-	body.move_and_collide(velocity)
-	var body_pos = body.position
-	body.position = Vector2(0, 0)
-	position = position + body_pos
 	
 func current_tile():
 	var center_pos = position + Vector2(Globals.tilesize / 2, Globals.tilesize / 2)
@@ -77,10 +63,7 @@ func is_dead():
 	return get_parent().playfield[current_tile.y][current_tile.x].current_color != current_color
 
 func _process(delta):
-	if player_number == 1:
-		handle_WASD_keys(delta)
-	else:
-		handle_Arrow_keys(delta)
+	handle_keys()
 		
 			
 func speedup(time):
