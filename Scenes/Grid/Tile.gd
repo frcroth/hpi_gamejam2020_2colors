@@ -4,6 +4,9 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var current_color = Globals.blue
+var red_sprite = preload("res://Assets/Graphics/Tiles/red_tile/red_tile.png")
+var blue_sprite = preload("res://Assets/Graphics/Tiles/blue_tile/blue_tile.png")
+var sprite_pixels = 64
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,12 +15,18 @@ func _ready():
 	update_color()
 	
 func set_dimensions():
-	$TileArea/TileCollisionShape.shape.set_extents(Vector2(Globals.tilesize/2, Globals.tilesize/2))
-	$TileArea/TileCollisionShape.position = Vector2(Globals.tilesize/2, Globals.tilesize/2)
-	$TileArea/TileColor.rect_size = Vector2(Globals.tilesize, Globals.tilesize)
+	var new_extents = Vector2(Globals.tilesize/2, Globals.tilesize/2)
+	$TileArea/TileCollisionShape.shape.set_extents(new_extents)
+	$TileArea/TileCollisionShape.position = new_extents
+	$TileArea/TileSprite.position = new_extents
+	var new_scale = Globals.tilesize / sprite_pixels
+	$TileArea/TileSprite.transform.scaled(Vector2(new_scale, new_scale))
 
 func update_color():
-	$TileArea/TileColor.color = Color(current_color)
+	if current_color == Globals.blue:
+		$TileArea/TileSprite.texture = blue_sprite 
+	else:
+		$TileArea/TileSprite.texture = red_sprite
 
 func swap_color():
 	current_color = Globals.blue if (current_color == Globals.red) else Globals.red
