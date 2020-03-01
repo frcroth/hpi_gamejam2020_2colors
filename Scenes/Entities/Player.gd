@@ -49,9 +49,10 @@ func handle_keys():
 		position = position + body_pos
 		if colorstreak_active:
 			var current_tile = current_tile()
-			var inverted_player_color = Globals.red if current_color == Globals.blue else Globals.blue
-			get_parent().playfield[current_tile.y][current_tile.x].set_color(inverted_player_color)
+			get_parent().playfield[current_tile.y][current_tile.x].set_color(inverted_color())
 	
+func inverted_color():
+	return Globals.red if current_color == Globals.blue else Globals.blue
 	
 func current_tile():
 	var center_pos = position + Vector2(Globals.tilesize / 2, Globals.tilesize / 2)
@@ -69,27 +70,32 @@ func _process(delta):
 			
 func speedup(time):
 	speed *= 2
-	var timer = Timer.new()
-	timer.one_shot = true
-	timer.set_wait_time(time)
-	timer.connect("timeout", self, "speeddown")
-	add_child(timer)
-	timer.start()
+	start_timer(time, "speeddown")
 	
 func speeddown():
 	speed /= 2
 	
-func activate_colorstreak(time):
-	colorstreak_active = true
+func start_timer(time, action_on_end):
 	var timer = Timer.new()
 	timer.one_shot = true
 	timer.set_wait_time(time)
-	timer.connect("timeout", self, "deactivate_colorstreak")
+	timer.connect("timeout", self, action_on_end)
 	add_child(timer)
 	timer.start()
+
+func activate_colorstreak(time):
+	colorstreak_active = true
+	start_timer(time, "deactivate_colorstreak")
 	
 func deactivate_colorstreak():
 	colorstreak_active = false
+	
+func create_color_cross():
+	var current_tile = current_tile()
+	for x in range(get_parent().width):
+		get_parent().playfield[current_tile.y][x].set_color(inverted_color())
+	for y in range(get_parent().height):
+		get_parent().playfield[y][current_tile.x].set_color(inverted_color())
 	
 func pickup():
 	$PickupPlayer.play(0)

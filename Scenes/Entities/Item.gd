@@ -13,12 +13,16 @@ func init(item_type):
 		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/speedup/speedup.png")
 	if(type == "color"):
 		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/color/color.png")
+	if(type == "cross"):
+		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Players/playerblueplaceholder.png")
 	
 func do_item_effect(body):
 	if(type == "speed"):
 		body.get_parent().speedup(5)
 	if(type == "color"):
 		body.get_parent().activate_colorstreak(10)
+	if(type == "cross"):
+		body.get_parent().create_color_cross()
 
 func pickup(body):
 	$Particles2D.emitting = true
