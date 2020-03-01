@@ -1,6 +1,6 @@
 extends Node2D
 
-export var speed = 2
+export var speed = 4
 var screen_size
 var player_number
 var current_color
@@ -80,3 +80,15 @@ func pickup():
 	
 func speeddown():
 	speed /= 2
+	
+func die():
+	Globals.player_lost(player_number)
+
+func on_beat():
+	if Globals.PLAYERS_CAN_DIE:
+		# give some time to change tile
+		yield (get_tree().create_timer(Globals.GOODWILLTIME),"timeout")
+		# now you have to be on the right tile!
+		if(is_dead()):
+			print("Player ", player_number ," is dead!")
+			die()

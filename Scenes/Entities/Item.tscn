@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/Entities/Items.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Entities/Item.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Items/speedup/new_spriteframes.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -33,7 +33,6 @@ shape = SubResource( 1 )
 
 [node name="ItemSprite" type="AnimatedSprite" parent="Area2D"]
 frames = ExtResource( 2 )
-frame = 2
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="."]

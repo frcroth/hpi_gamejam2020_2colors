@@ -13,6 +13,10 @@ func pickup(body):
 	$Particles2D.emitting = true
 	body.get_parent().speedup(5)
 	body.get_parent().pickup()
+	$Area2D/ItemSprite.visible = false
+	$Area2D/CollisionShape2D.call_deferred("set_disabled",true)
+	# wait for particle effects
+	yield (get_tree().create_timer(1),"timeout")
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

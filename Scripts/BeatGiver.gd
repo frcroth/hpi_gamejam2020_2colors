@@ -1,7 +1,7 @@
 extends Node2D
 
 var beating = true
-var timefactor = 2
+var timefactor = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
