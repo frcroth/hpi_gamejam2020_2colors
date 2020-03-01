@@ -15,9 +15,11 @@ func _ready():
 	if player_number == 1:
 		get_node("Body/PlayerSprite").frames = load("res://Assets/Graphics/Players/playerblue/playerblue.tres")
 		current_color = Globals.blue
+		add_to_group("player1")
 	else:
 		get_node("Body/PlayerSprite").frames = load("res://Assets/Graphics/Players/playerred/playerred.tres")
 		current_color = Globals.red
+		add_to_group("player2")
 
 func handle_keys():
 	var velocity = Vector2()  # The player's movement vector.
