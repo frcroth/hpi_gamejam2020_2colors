@@ -94,9 +94,6 @@ func deactivate_colorstreak():
 func pickup():
 	$PickupPlayer.play(0)
 	
-func speeddown():
-	speed /= 2
-	
 func die():
 	Globals.player_lost(player_number)
 
