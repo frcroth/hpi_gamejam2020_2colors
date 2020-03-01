@@ -17,9 +17,6 @@ _global_script_class_icons={
 
 config/name="HPIGameJam2020_2Colors"
 run/main_scene="res://Scenes/UI/MainMenu.tscn"
-boot_splash/image="res://Assets/Graphics/hpi.png"
-boot_splash/fullsize=false
-boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://icon.png"
 
 [autoload]
