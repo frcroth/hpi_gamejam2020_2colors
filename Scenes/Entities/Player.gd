@@ -52,7 +52,7 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= 1
-	else:
+	if player_number == 2 and controlsinverted:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x -= 1
 		if Input.is_action_pressed("ui_left"):
@@ -88,39 +88,31 @@ func is_dead():
 func _process(delta):
 	handle_keys()
 		
-			
-func speedup(time):
-	speed *= 2
+func item_timer(time, revert_method):
 	var timer = Timer.new()
 	timer.one_shot = true
 	timer.set_wait_time(time)
-	timer.connect("timeout", self, "speeddown")
+	timer.connect("timeout", self,revert_method )
 	add_child(timer)
 	timer.start()
+			
+func speedup(time):
+	speed *= 2
+	item_timer(time,"speeddown")
 	
 func speeddown():
 	speed /= 2
 	
 func activate_colorstreak(time):
 	colorstreak_active = true
-	var timer = Timer.new()
-	timer.one_shot = true
-	timer.set_wait_time(time)
-	timer.connect("timeout", self, "deactivate_colorstreak")
-	add_child(timer)
-	timer.start()
+	item_timer(time,"deactivate_colorstreak")
 	
 func deactivate_colorstreak():
 	colorstreak_active = false
 	
 func invert_controls(time):
 	controlsinverted = true
-	var timer = Timer.new()
-	timer.one_shot = true
-	timer.set_wait_time(time)
-	timer.connect("timeout", self, "deactivate_inverted_control")
-	add_child(timer)
-	timer.start()
+	item_timer(time,"deactivate_inverted_control")
 
 func deactivate_inverted_controls():
 	controlsinverted = false
