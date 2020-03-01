@@ -13,37 +13,37 @@ var foo = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	if player_number == 1:
+	if player_number == 0:
 		get_node("Body/PlayerSprite").frames = load("res://Assets/Graphics/Players/playerblue/playerblue.tres")
 		current_color = Globals.blue
-		add_to_group("player1")
+		add_to_group("player0")
 	else:
 		get_node("Body/PlayerSprite").frames = load("res://Assets/Graphics/Players/playerred/playerred.tres")
 		current_color = Globals.red
-		add_to_group("player2")
+		add_to_group("player1")
 
 
 func handle_keys():
 	var velocity = Vector2()  # The player's movement vector.
+	if player_number == 0 and !controlsinverted:
+		if Input.is_key_pressed(KEY_D):
+			velocity.x += 1
+		if Input.is_key_pressed(KEY_A):
+			velocity.x -= 1
+		if Input.is_key_pressed(KEY_S):
+			velocity.y += 1
+		if Input.is_key_pressed(KEY_W):
+			velocity.y -= 1
+	if player_number == 0 and controlsinverted:
+		if Input.is_key_pressed(KEY_D):
+			velocity.x -= 1
+		if Input.is_key_pressed(KEY_A):
+			velocity.x += 1
+		if Input.is_key_pressed(KEY_S):
+			velocity.y -= 1
+		if Input.is_key_pressed(KEY_W):
+			velocity.y += 1
 	if player_number == 1 and !controlsinverted:
-		if Input.is_key_pressed(KEY_D):
-			velocity.x += 1
-		if Input.is_key_pressed(KEY_A):
-			velocity.x -= 1
-		if Input.is_key_pressed(KEY_S):
-			velocity.y += 1
-		if Input.is_key_pressed(KEY_W):
-			velocity.y -= 1
-	if player_number == 1 and controlsinverted:
-		if Input.is_key_pressed(KEY_D):
-			velocity.x -= 1
-		if Input.is_key_pressed(KEY_A):
-			velocity.x += 1
-		if Input.is_key_pressed(KEY_S):
-			velocity.y -= 1
-		if Input.is_key_pressed(KEY_W):
-			velocity.y += 1
-	if player_number == 2 and !controlsinverted:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += 1
 		if Input.is_action_pressed("ui_left"):
@@ -52,7 +52,7 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= 1
-	if player_number == 2 and controlsinverted:
+	if player_number == 1 and controlsinverted:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x -= 1
 		if Input.is_action_pressed("ui_left"):
@@ -122,7 +122,7 @@ func pickup():
 
 func get_opponent():
 	if(player_number==1):
-		return get_parent().get_tree().get_nodes_in_group("player2")[0]
+		return get_parent().get_tree().get_nodes_in_group("player0")[0]
 	else:
 		return get_parent().get_tree().get_nodes_in_group("player1")[0]
 

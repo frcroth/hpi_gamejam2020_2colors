@@ -1,8 +1,8 @@
 extends Node2D
 
 onready var player_scene = load("res://Scenes/Entities/Player.tscn")
+var player0
 var player1
-var player2
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -48,15 +48,15 @@ func init_players():
 	var topleft = playfield[0][0].position
 	var bottomright = topleft + Vector2((width-1) * Globals.tilesize, (height - 1) * Globals.tilesize)
 	
-	player1 = player_scene.instance()
-	player1.position = topleft
-	player1.player_number = 0
-	add_child(player1)
+	player0 = player_scene.instance()
+	player0.position = topleft
+	player0.player_number = 0
+	add_child(player0)
 	
-	player2 = player_scene.instance()
-	player2.position = bottomright
-	player2.player_number = 1
-	add_child(player2)
+	player1 = player_scene.instance()
+	player1.position = bottomright
+	player1.player_number = 1
+	add_child(player1)
 #
 
 	
