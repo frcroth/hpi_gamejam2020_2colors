@@ -8,6 +8,7 @@ func _ready():
 	
 func init(item_type):
 	type = item_type
+	$AnimationPlayer.play("ItemDefaultAnimation")
 	if(type == "speed"):
 		$Area2D/ItemSprite.texture = load("res://Assets/Graphics/Items/speedup/speedup.png")
 	if(type == "color"):

@@ -6,6 +6,7 @@ extends Node2D
 
 var item_spawn_time = 5
 onready var item = preload("res://Scenes/Entities/Item.tscn")
+var itemtypes = ["color","speed"]
 
 var rng = RandomNumberGenerator.new()
 
