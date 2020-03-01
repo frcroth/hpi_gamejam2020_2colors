@@ -5,7 +5,8 @@ extends Node2D
 # var b = "text"
 
 var item_spawn_time = 5
-var items = [preload("res://Scenes/Entities/SpeedItem.tscn"), preload("res://Scenes/Entities/ColorItem.tscn")]
+var items = [preload("res://Scenes/Entities/SpeedItem.tscn"), 
+			 preload("res://Scenes/Entities/ColorItem.tscn")]
 
 var rng = RandomNumberGenerator.new()
 
@@ -13,7 +14,6 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	rng.randomize()
 	var timer = Timer.new()
-	timer.one_shot = true
 	timer.set_wait_time(item_spawn_time)
 	timer.connect("timeout", self, "spawn_new_item")
 	add_child(timer)
