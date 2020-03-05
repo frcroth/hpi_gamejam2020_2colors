@@ -25,7 +25,7 @@ func _ready():
 
 func handle_keys():
 	var velocity = Vector2()  # The player's movement vector.
-	if player_number == 0 and !controlsinverted:
+	if player_number == 0:
 		if Input.is_key_pressed(KEY_D):
 			velocity.x += 1
 		if Input.is_key_pressed(KEY_A):
@@ -34,16 +34,7 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_key_pressed(KEY_W):
 			velocity.y -= 1
-	elif player_number == 0 and controlsinverted:
-		if Input.is_key_pressed(KEY_D):
-			velocity.x -= 1
-		if Input.is_key_pressed(KEY_A):
-			velocity.x += 1
-		if Input.is_key_pressed(KEY_S):
-			velocity.y -= 1
-		if Input.is_key_pressed(KEY_W):
-			velocity.y += 1
-	elif player_number == 1 and !controlsinverted:
+	elif player_number == 1:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += 1
 		if Input.is_action_pressed("ui_left"):
@@ -52,18 +43,12 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= 1
-	elif player_number == 1 and controlsinverted:
-		if Input.is_action_pressed("ui_right"):
-			velocity.x -= 1
-		if Input.is_action_pressed("ui_left"):
-			velocity.x += 1
-		if Input.is_action_pressed("ui_down"):
-			velocity.y -= 1
-		if Input.is_action_pressed("ui_up"):
-			velocity.y += 1
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+		
+		if controlsinverted:
+			velocity = velocity*-1.0
 		
 		body.move_and_collide(velocity)
 		var body_pos = body.position
@@ -112,7 +97,7 @@ func deactivate_colorstreak():
 	
 func invert_controls(time):
 	controlsinverted = true
-	item_timer(time,"deactivate_inverted_control")
+	item_timer(time,"deactivate_inverted_controls")
 
 func deactivate_inverted_controls():
 	controlsinverted = false
