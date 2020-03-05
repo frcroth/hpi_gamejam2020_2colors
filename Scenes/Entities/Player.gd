@@ -115,11 +115,17 @@ func die():
 	Globals.player_lost(player_number)
 
 func on_beat():
-	if Globals.PLAYERS_CAN_DIE:
+	if Globals.PLAYERS_CAN_DIE_BY_TILE:
 		# give some time to change tile
 		yield (get_tree().create_timer(Globals.GOODWILLTIME),"timeout")
 		# now you have to be on the right tile!
 		
+		#death by wrong tile
 		if(is_dead()):
 			print("Player ", player_number ," is dead!")
+			die()
+			
+	if Globals.PLAYER_CAN_DIE_BY_DEATHZONE:
+		#death by deathzone
+		if(get_parent().get_node("DeathZone").body_in_area($Body)):
 			die()
