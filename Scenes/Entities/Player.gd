@@ -34,7 +34,7 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_key_pressed(KEY_W):
 			velocity.y -= 1
-	if player_number == 0 and controlsinverted:
+	elif player_number == 0 and controlsinverted:
 		if Input.is_key_pressed(KEY_D):
 			velocity.x -= 1
 		if Input.is_key_pressed(KEY_A):
@@ -43,7 +43,7 @@ func handle_keys():
 			velocity.y -= 1
 		if Input.is_key_pressed(KEY_W):
 			velocity.y += 1
-	if player_number == 1 and !controlsinverted:
+	elif player_number == 1 and !controlsinverted:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += 1
 		if Input.is_action_pressed("ui_left"):
@@ -52,7 +52,7 @@ func handle_keys():
 			velocity.y += 1
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= 1
-	if player_number == 1 and controlsinverted:
+	elif player_number == 1 and controlsinverted:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x -= 1
 		if Input.is_action_pressed("ui_left"):
