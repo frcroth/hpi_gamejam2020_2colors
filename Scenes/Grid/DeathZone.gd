@@ -26,6 +26,7 @@ func entered(body):
 func body_in_area(body):
 	for area in areas:
 		if(area.overlaps_body(body)):
+			print(body.get_parent().player_number, " is in deathzone")
 			return true
 	return false
 

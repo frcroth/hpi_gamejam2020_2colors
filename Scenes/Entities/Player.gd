@@ -122,10 +122,10 @@ func on_beat():
 		
 		#death by wrong tile
 		if(is_dead()):
-			print("Player ", player_number ," is dead!")
 			die()
 			
-	if Globals.PLAYER_CAN_DIE_BY_DEATHZONE:
+	if Globals.PLAYERS_CAN_DIE_BY_DEATHZONE:
 		#death by deathzone
 		if(get_parent().get_node("DeathZone").body_in_area($Body)):
+			print("Player ", player_number ," dies!")
 			die()
