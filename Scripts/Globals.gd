@@ -2,13 +2,17 @@ extends Node
 
 var blue = Color("075c91")
 var red = Color("910b07")
-var colors = [red, blue]
+var colors = [blue,red]
 
 var tilesize = 64.0
 var beattime = 0.66
 var GOODWILLTIME = 0.3
 var player_won = 0
-var PLAYERS_CAN_DIE = true
+var PLAYERS_CAN_DIE_BY_TILE = true
+var PLAYERS_CAN_DIE_BY_DEATHZONE = true
+var ENABLE_DEATH_ZONE = true
+var death_zone_start = 4 # death zone starts contracting after ... secs
+var death_zone_speed = 0.08
 
 var wins = [0, 0]
 

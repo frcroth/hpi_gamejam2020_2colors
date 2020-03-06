@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Grid/Board.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Logic/BeatGiver.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Logic/Borders.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Music/91.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/Grid/ItemSpawner.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Grid/DeathZone.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/DeathZoneArea.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -35,3 +37,21 @@ environment = SubResource( 1 )
 
 [node name="ItemSpawner" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="DeathZone" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="UpperArea" parent="DeathZone" instance=ExtResource( 7 )]
+position = Vector2( 0, 1 )
+
+[node name="RightArea" parent="DeathZone" instance=ExtResource( 7 )]
+position = Vector2( 719.025, 39.1147 )
+rotation = 1.57079
+
+[node name="LowerArea" parent="DeathZone" instance=ExtResource( 7 )]
+position = Vector2( 759.416, 726.803 )
+rotation = 3.14159
+
+[node name="LeftArea" parent="DeathZone" instance=ExtResource( 7 )]
+position = Vector2( -6.10352e-05, 726.803 )
+rotation = -1.57079

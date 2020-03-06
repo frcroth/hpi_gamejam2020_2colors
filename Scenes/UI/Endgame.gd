@@ -1,6 +1,6 @@
 extends Control
 
-var endtexts = ["Red won!", "Blue won!"]
+var endtexts = ["Blue won!", "Red won!"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,8 +13,8 @@ func start_game():
 func player_won(player_num):
 	$WinnerColorRect.color = Globals.colors[player_num]
 	$WinnerLabel.text = endtexts[player_num]
-	$PointsRedLabel.text += str(Globals.wins[0])
-	$PointsBlueLabel.text += str(Globals.wins[1])
+	$PointsRedLabel.text += str(Globals.wins[1])
+	$PointsBlueLabel.text += str(Globals.wins[0])
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
